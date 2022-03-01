@@ -1,24 +1,46 @@
-import logo from './logo.svg';
+import React from "react";
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js'
+
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
+
+import Navbar from './components/Navbar';
+import Home from './components/pages/Home';
+import Services from './components/pages/Services';
+import Products from './components/pages/Products';
+import SignUp from './components/pages/SignUp';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path='/' exact element={<Home></Home>} />
+          <Route path='/services' element={<Services></Services>} />
+          <Route path='/products' element={<Products></Products>} />
+          <Route path='/sign-up' element={<SignUp></SignUp>} />
+        </Routes>
+      </Router>
+    </>
+    // <>
+    //   <Navbar></Navbar>
+    //   <Router>
+    //     <Routes>
+    //       <Route exact path="/" element={<Home />} />
+    //       <Route exact path="/about" element={<About />} />
+    //       <Route exact path="/contact" element={<Contact />} />
+    //       <Route exact path="/services" element={<Services />} />
+    //       <Route path="*" element={<Home />} />
+    //     </Routes>
+    //   </Router>
+    // </>
+
   );
 }
 
